@@ -65,6 +65,47 @@ extract data:
 
 perl script in [code/](code/)
 
+## rtt_status_level
+
+    status_rate(probe, isp, root_label, status) : rate of rtt_status==status
+    isp_status_rate(isp, root_label, status) : avg of status_rate in different provinces's probe nodes
+    mirror_status_rate(root_label, status) : avg of isp_status_rate in different isps
+    main_status_rate(status) : avg of mirror_status_rate in different root_labels
+    rtt_status_level = main_status_rate('good')
+
+##  local_mirror_level
+
+**only** calc the root_labels which have deploy local root mirror instances in the area.
+
+    local_rate(probe, isp, root_label) : rate of probe visit local root mirror instance
+    isp_local_rate(isp, root_label) : avg of local_rate in different provinces's probe nodes
+    mirror_local_rate(root_label):  avg of isp_local_rate in different isps
+    main_local_rate(): avg of mirror_local_rate in different root_labels
+
+    local_mirror_level = main_local_rate() 
+
+##  route_warn_level
+
+RY: root_labels has deployed local root mirror instances in the area
+
+RN: root_labels didn't deployed local root mirror instances in the area
+
+    rtt_warn(probe, isp, root_label, RN) : rate of { rtt_avg(RY) >= rtt_avg(RN) }
+    isp_rtt_warn(isp, root_label, RN) : avg of rtt_warn in different provinces's probe nodes
+    mirror_rtt_warn(root_label, RN) : avg of isp_rtt_warn in different isps
+    main_rtt_warn(RY, RN) : avg of mirror_rtt_warn in different root_labels of RY set
+
+    root_warn_level = main_rtt_warn(RY, RN)
+
+## rtt_diff_level
+    
+    rtt_avg(probe, isp, root_label) : avg of rtt 
+    isp_rtt_std(isp, root_label) : std of rtt_avg/100ms in different provinces's probe nodes
+    mirror_rtt_std(root_label) : avg of isp_rtt_std in different isps
+    main_rtt_std() : avg of mirror_rtt_std in different root_labels
+
+    rtt_diff_level = main_rtt_std()
+
 # Chinese 中文
 
 计算机应用研究 2016 增刊 P285
