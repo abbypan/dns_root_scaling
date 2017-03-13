@@ -67,7 +67,7 @@ perl script in [code/](code/)
 
 # Chinese 中文
 
-计算机应用研究 2016 增刊
+计算机应用研究 2016 增刊 P285
 
 中文标题   [一种评估DNS根服务质量的方法-原稿](paper/An_Evaluation_Method_for_DNS_Root_Service_Quality_2015060663_manuscript.pdf)
 
