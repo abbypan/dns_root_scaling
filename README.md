@@ -69,9 +69,7 @@ extract data:
     probe_prov: fujian
     probe_isp: telecom
 
-# code
-
-perl script in [code/](code/)
+# level
 
 ## rtt_status_level
 
