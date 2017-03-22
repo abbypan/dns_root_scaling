@@ -37,7 +37,6 @@ read_table($file,
             $ip = ( $mirror=~/\./ ? `dig +short $mirror` : '' );
             $ip=~s/^\s+|\s+$//sg;
             my $ploc = get_ip_loc([ $ip ]);
-            $ploc->{'223.220.250.33'} = { state=> '中国', prov=>'青海', isp=> '电信' };
             $ploc->{$ip}{$_} ||= 'unknown' for qw/state prov isp/;
             $loc = join(",", @{$ploc->{$ip}}{qw/state prov isp/});
             $rem_mirror{$mirror}{ip} = $ip;

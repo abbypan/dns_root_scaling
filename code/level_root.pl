@@ -1,7 +1,4 @@
 #!/usr/bin/perl
-use lib 'd:/dropbox/save/windows/chart_director';
-use lib 'd:/dropbox/github/SimpleCall-ChartDirector/lib';
-use lib 'D:/Dropbox/github/SimpleR-Reshape/lib';
 use SimpleR::Reshape;
 use SimpleR::Stat;
 use Statistics::Basic qw/unbias=1 stddev variance/;
@@ -27,9 +24,6 @@ our $ZONE_MIRROR_R_NUM = 4;
 our $ZONE_MIRROR_NUM = 6;
 our @LOCAL_MIRROR_NS = qw/
 f.root-servers.net.
-i.root-servers.net.
-j.root-servers.net.
-l.root-servers.net.
 /;
 our %LOCAL_MIRROR_NS = map { $_ => 1 } @LOCAL_MIRROR_NS;
 
@@ -64,8 +58,6 @@ for my $f ($f_src, glob("$f_src.*")){
     }
     $isp ||= 'main';
     $isp = 'main' if($isp eq 'net');
-    #my $isp_x = encode('utf8', decode(locale => $isp));
-    #my $isp_x = encode('utf8', decode(locale => $isp));
     my $isp_x = decode(locale => $isp);
 
     unshift @$r, ($ns, $isp, $rtt_warn->{$ns}{$isp_x});

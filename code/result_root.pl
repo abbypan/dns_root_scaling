@@ -18,13 +18,6 @@ my %rem_mirror_ip;
 my %rem_mirror_loc;
 
      my @tietong = qw/
-222.45.45.59
-222.44.83.6
-222.42.112.145
-61.236.129.147
-211.98.176.7 
-222.34.30.41
-123.81.249.98
 /;
 
 open my $fhw, '>:utf8', "$key/root_rtt.csv";
@@ -38,8 +31,6 @@ for my $f (@files){
     if(! exists $rem_mirror_loc{$probe}){
         my $ploc = get_ip_loc([ $probe ]);
 
-        $ploc->{'223.220.250.33'} = { 
-            state=> '中国', prov=>'青海', isp=> '电信' };
         $rem_mirror_loc{$probe} = join(",", @{$ploc->{$probe}}{qw/state prov isp/});
     }
     
@@ -57,8 +48,6 @@ for my $f (@files){
         $rem_mirror_ip{$mirror} = $ip;
     if(! exists $rem_mirror_loc{$ip}){
         my $ploc = get_ip_loc([ $ip ]);
-        $ploc->{'223.220.250.33'} = { 
-            state=> '中国', prov=>'青海', isp=> '电信' };
         $rem_mirror_loc{$ip} = join(",", @{$ploc->{$ip}}{qw/state prov isp/});
     }
 

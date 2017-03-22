@@ -1,6 +1,4 @@
 #!/usr/bin/perl
-use lib 'd:/dropbox/save/windows/chart_director';
-use lib 'd:/dropbox/github/SimpleCall-ChartDirector/lib';
 use SimpleR::Reshape;
 use SimpleR::Stat;
 use Encode::Locale;
@@ -71,16 +69,6 @@ sub chart_prov_isp_rtt_multibar {
             sep=> ',', 
             legend_sort => $isp_list, 
         );
-
-        #print Dumper($cast_r);
-        #my @color;
-        #for my $d (@$cast_r){
-        #my $c = $d<100 ? 'LightBlue1' : 
-        #$d<300 ? 'Green' : 
-        #$d<1000 ? 'Yellow' : 
-        #'Red';
-        #push @color, $c;
-        #}
 
         s/电信/telecom/ for @{$opt{legend}};
         s/联通/unicom/ for @{$opt{legend}};
@@ -153,14 +141,6 @@ sub chart_prov_dom_cnt_stackbar_mirror {
         );
 
         print Dumper($cast_r);
-        #my @color;
-        #for my $d (@$cast_r){
-        #my $c = $d<100 ? 'LightBlue1' : 
-        #$d<300 ? 'Green' : 
-        #$d<1000 ? 'Yellow' : 
-        #'Red';
-        #push @color, $c;
-        #}
 
         s/电信/telecom/ for @{$opt{legend}};
         s/联通/unicom/ for @{$opt{legend}};
